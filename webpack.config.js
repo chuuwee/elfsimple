@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/renderer/index.tsx',
@@ -17,6 +18,10 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
@@ -24,6 +29,6 @@ module.exports = {
       template: './src/renderer/index.html',
     }),
   ],
-  target: 'electron-renderer',
+  target: 'electron-renderer', // 'web',
 };
 
