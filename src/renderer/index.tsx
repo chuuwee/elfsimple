@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom';
 import { App } from "_renderer/App";
 import 'normalize.css/normalize.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
@@ -15,4 +15,10 @@ const AppWithRouter: React.FC = () => {
   );
 };
 
-ReactDOM.render(<AppWithRouter />, document.getElementById('app'));
+const rootNode = document.getElementById('app');
+if (!rootNode) {
+  throw new Error("No root element found");
+}
+
+const root = createRoot(rootNode);
+root.render(<AppWithRouter />);

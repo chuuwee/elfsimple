@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { setUser, unsetUser } from '_main/users';
+import { setUser } from '_/main/store';
 
 const getCookies = (response: AxiosResponse) => {
   const cookies = response.headers['set-cookie'];
@@ -43,7 +43,7 @@ const login = async ({ username, password }: { username: string; password: strin
   }
 };
 
-const logout = async () => unsetUser();
+const logout = async () => setUser(null);
 
 export const registerAuthHandlers = (ipcMain: Electron.IpcMain) => {
   ipcMain.handle('login', async (_, ...args: Parameters<typeof login>) => await login(...args));

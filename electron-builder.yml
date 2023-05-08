@@ -1,5 +1,5 @@
 appId: com.example.elfsimple
-productName: elfsimPLE
+productName: elfsimple
 directories:
   output: build
   buildResources: build-resources

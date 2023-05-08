@@ -9,6 +9,9 @@ contextBridge.exposeInMainWorld('api', {
   on: (channel: string, listener: Listener): void => {
     ipcRenderer.on(channel, listener);
   },
+  off: (channel: string, listener: Listener): void => {
+    ipcRenderer.off(channel, listener);
+  },
   removeListener: (channel: string, listener: Listener): void => {
     ipcRenderer.removeListener(channel, listener);
   },

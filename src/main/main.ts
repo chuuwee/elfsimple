@@ -1,8 +1,9 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import { registerAuthHandlers } from '_main/auth';
-import { registerUsersHandlers } from '_main/users';
+import { registerStoreHandlers } from '_/main/store';
 import { isDev } from '../config';
+import { registerMonitorHandlers } from './monitor/monitor';
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -17,9 +18,8 @@ function createWindow() {
     },
   });
 
- //mainWindow.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'));
   mainWindow.loadFile('index.html').finally(() => { /* no action */ });
-  // Open the DevTools.
+
   if (isDev) {
     mainWindow.webContents.openDevTools();
   }
@@ -40,4 +40,5 @@ app.on('activate', () => {
 });
 
 registerAuthHandlers(ipcMain);
-registerUsersHandlers(ipcMain);
+registerStoreHandlers(ipcMain);
+registerMonitorHandlers(ipcMain);
