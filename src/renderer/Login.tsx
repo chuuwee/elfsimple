@@ -7,7 +7,7 @@ import {
   H4,
   InputGroup,
 } from '@blueprintjs/core';
-import { useSetCurrentUser } from './contexts/App/hooks';
+import { useSetCurrentUser } from '_renderer/contexts/App/hooks';
 
 interface LoginProps {
   onClose: () => void;

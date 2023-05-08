@@ -1,4 +1,4 @@
-import { SetCurrentUserAction } from "./actions";
+import { SetCurrentUserAction } from "_renderer/contexts/App/actions";
 
 export interface AppState {
   currentUser: string | null;

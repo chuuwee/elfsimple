@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { setUser, unsetUser } from './users';
+import { setUser, unsetUser } from '_main/users';
 
 const getCookies = (response: AxiosResponse) => {
   const cookies = response.headers['set-cookie'];

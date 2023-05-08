@@ -1,21 +1,28 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
-import { registerAuthHandlers } from './auth';
-import { registerUsersHandlers } from './users';
+import { registerAuthHandlers } from '_main/auth';
+import { registerUsersHandlers } from '_main/users';
+import { isDev } from '../config';
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    minWidth: 900,
+    height: 750,
+    minHeight: 600,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      preload: path.join(__dirname, '../preload.js'),
-    }
+      devTools: isDev,
+      preload: path.join(__dirname, './preload.bundle.js'),
+      webSecurity: !isDev,
+    },
   });
 
-  mainWindow.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'));
-  mainWindow.webContents.openDevTools()
+ //mainWindow.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'));
+  mainWindow.loadFile('index.html').finally(() => { /* no action */ });
+  // Open the DevTools.
+  if (isDev) {
+    mainWindow.webContents.openDevTools();
+  }
 }
 
 app.whenReady().then(createWindow);

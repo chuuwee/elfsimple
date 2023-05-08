@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useAppContext } from './AppContext';
+import { useAppContext } from '_renderer/contexts/App/AppContext';
 
 export const useCurrentUser = () => {
   const { state } = useAppContext();

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { Button, Intent, Menu, MenuDivider, MenuItem } from '@blueprintjs/core';
 import { Popover2 as Popover } from '@blueprintjs/popover2';
-import { useCurrentUser, useSetCurrentUser } from './contexts/App/hooks';
+import { useCurrentUser, useSetCurrentUser } from '_renderer/contexts/App/hooks';
 
 export const Profile: React.FC = () => {
   const currentUser = useCurrentUser();

@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Alignment, Callout, Card, H1, Navbar, Spinner } from '@blueprintjs/core';
 import { useHistory, Switch, Route, Redirect } from 'react-router-dom';
-import { Login } from './Login';
-import { AppProvider } from './contexts/App/AppContext';
-import { useCurrentUser } from './contexts/App/hooks';
-import { AppState, getInitialState } from './contexts/App/types';
-import { Profile } from './Profile';
+import { Login } from '_renderer/Login';
+import { AppProvider } from '_renderer/contexts/App/AppContext';
+import { useCurrentUser } from '_renderer/contexts/App/hooks';
+import { AppState, getInitialState } from '_renderer/contexts/App/types';
+import { Profile } from '_renderer/Profile';
 
 const AppNavbar: React.FC = () => {
   return (
