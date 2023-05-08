@@ -9,11 +9,9 @@ import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 const AppWithRouter: React.FC = () => {
   return (
-    <React.StrictMode>
-      <Router>
-        <App />
-      </Router>
-    </React.StrictMode>
+    <Router>
+      <App />
+    </Router>
   );
 };
 

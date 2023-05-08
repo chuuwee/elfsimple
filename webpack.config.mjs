@@ -3,8 +3,8 @@ import { fileURLToPath } from 'url';
 import CopyPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
-import webpack from 'webpack';
 import { merge } from 'webpack-merge';
+import webpack from 'webpack';
 
 /* eslint-disable no-underscore-dangle */
 const __filename = fileURLToPath(import.meta.url);
@@ -46,6 +46,11 @@ const commonConfig = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+  ]
 };
 
 const mainConfig = merge(commonConfig, {

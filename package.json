@@ -44,7 +44,7 @@
   },
   "build": {
     "appId": "com.devtography.electron_boilerplate",
-    "productName": "Electron+React+TypeScript Boilerplate",
+    "productName": "elfsimple",
     "directories": {
       "app": "./dist/",
       "output": "./out/"
