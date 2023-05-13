@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { H4 } from '@blueprintjs/core';
 import { IpcRendererEvent } from 'electron';
 import { FilePicker } from '_renderer/FilePicker';
-import { useLogFilePath, useSetLogFilePath } from '_renderer/contexts/hooks';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -11,8 +10,6 @@ const AppContainer = styled.div`
 
 export const AppBody: React.FC = () => {
   const [messages, setMessages] = useState<string[]>(() => []);
-  const logFilePath = useLogFilePath();
-  const setLogFilePath = useSetLogFilePath();
 
   useEffect(() => {
     //window.api.invoke('subscribeToMessages');
@@ -25,14 +22,9 @@ export const AppBody: React.FC = () => {
     };
   }, []);
 
-  const onFileSelect = useCallback(async (logFilePath: string) => {
-    setLogFilePath(logFilePath);
-    await window.api.invoke('setLogPath', logFilePath);
-  }, [])
-
   return (
     <AppContainer>
-      <FilePicker selectedFile={logFilePath} onFileSelect={onFileSelect} />
+      <FilePicker />
       {messages.map(str => <H4>{str}</H4>)}
     </AppContainer>
   );
